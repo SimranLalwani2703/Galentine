@@ -58,19 +58,20 @@
 
     .popup {
       position: fixed;
-      bottom: 10px;
+      bottom: 30px; /* higher than before */
       background: #ffeff7;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 20px;
       color: #ff4f9a;
-      font-size: 14px;
+      font-size: 16px; /* bigger text */
+      font-weight: bold; /* bolder */
       animation: floatUp 3s ease forwards;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
 
     @keyframes floatUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(-60px); }
+      to { opacity: 1; transform: translateY(-80px); } /* floats higher */
     }
 
     .hidden { display: none; }
@@ -94,7 +95,12 @@
 <body>
 
 <audio id="bgMusic" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Uh oh sound -->
+<audio id="uhOhSound">
+  <source src="https://www.myinstants.com/media/sounds/cartoon-uh-oh.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="mainCard">
@@ -106,12 +112,12 @@
 <div class="card hidden" id="yesCard">
   <h1>Yaayyyy Bestie! ✨</h1>
   <h1>Galentine date confirmed 💄🍰</h1>
-  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="200">
-  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXFlc2N2dTEzdm5pMWVhdmRibXMwZXVvbmFsZjRydnNqNGwxaWpnYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PJgv9nwSaugN03cM0s/giphy.gif" width="200">
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjJhMGNoY20xYzM1bmtkZnN0bm54b3RiYWU0bm5iYTNyMjdiOWtqYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/D9j761FH8SYJLyW9WO/giphy.gif" width="300">
 </div>
 
 <script>
   const music = document.getElementById("bgMusic");
+  const uhOh = document.getElementById("uhOhSound");
 
   const messages = [
     "Are you sure? 😢",
@@ -122,10 +128,14 @@
   ];
 
   function showMessage() {
+    // play uh oh sound
+    uhOh.currentTime = 0;
+    uhOh.play();
+
     const msg = document.createElement("div");
     msg.className = "popup";
     msg.innerText = messages[Math.floor(Math.random() * messages.length)];
-    msg.style.left = Math.random() * 90 + "%";
+    msg.style.left = Math.random() * 80 + "%";
     document.body.appendChild(msg);
 
     setTimeout(() => msg.remove(), 3000);
