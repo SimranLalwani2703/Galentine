@@ -1,261 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Will you be my Galentine? 💕</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galentine 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(135deg, #ffd1e8, #ffe6f2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-<style>
-* { box-sizing: border-box; }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffd6e8, #ffeef6);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  overflow-x: hidden;
-}
+    h1 {
+      color: #ff4f9a;
+      font-size: 26px;
+    }
 
-.card {
-  background: #fff;
-  padding: 30px 24px;
-  border-radius: 26px;
-  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
-  max-width: 420px;
-  width: 100%;
-  text-align: center;
-  animation: fadeIn 1s ease;
-}
+    p {
+      color: #666;
+      margin-bottom: 20px;
+    }
 
-h1 {
-  font-family: 'Pacifico', cursive;
-  color: #ff4d88;
-  font-size: 2.1rem;
-}
+    button {
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+    }
 
-.sub {
-  color: #ff77aa;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
+    .yes {
+      background: #ff4f9a;
+      color: white;
+    }
 
-.name {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #ff77aa;
-}
+    .no {
+      background: #ddd;
+      color: #666;
+    }
 
-.message {
-  color: #555;
-  margin: 15px 0;
-}
+    .popup {
+      position: fixed;
+      bottom: 10px;
+      background: #ffeff7;
+      padding: 10px 15px;
+      border-radius: 20px;
+      color: #ff4f9a;
+      font-size: 14px;
+      animation: floatUp 3s ease forwards;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 18px;
-  position: relative;
-}
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(-60px); }
+    }
 
-button {
-  border: none;
-  padding: 12px;
-  border-radius: 30px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
+    .hidden { display: none; }
 
-.yes {
-  background: #ff4d88;
-  color: #fff;
-}
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: pink;
+      border-radius: 50%;
+      animation: sparkle 1.5s linear infinite;
+    }
 
-.no {
-  background: #ffd1e6;
-  color: #ff2f73;
-  position: relative;
-}
-
-.footer {
-  margin-top: 16px;
-  font-size: 0.85rem;
-  color: #aaa;
-  min-height: 1.2em;
-}
-
-.music {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #ff77aa;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Panic animation */
-@keyframes panic {
-  0% { transform: scale(1) rotate(0); }
-  50% { transform: scale(0.8) rotate(-6deg); }
-  100% { transform: scale(0.85) rotate(6deg); }
-}
-
-/* Hearts */
-.heart {
-  position: fixed;
-  font-size: 20px;
-  animation: float 4s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-800px); opacity: 0; }
-}
-
-/* YES PAGE */
-#yesPage {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-#yesPage img {
-  width: 220px;
-  margin-bottom: 16px;
-}
-
-.sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, #fff, #ffd1e6);
-  border-radius: 50%;
-  animation: sparkle 1.2s forwards;
-}
-
-@keyframes sparkle {
-  from { opacity: 1; transform: scale(1); }
-  to { opacity: 0; transform: scale(0); }
-}
-</style>
+    @keyframes sparkle {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-80px); opacity: 0; }
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="cardPage" class="card">
-  <h1>Will you be my Galentine? 💕</h1>
-  <div class="sub">Galentine’s Day | Feb 13 | 8:00 PM</div>
-
-  <div class="name" id="girlName">Bestie</div>
-  <div class="message">Because life is better with you 💖</div>
-
-  <div class="buttons">
-    <button class="yes" onclick="sayYes()">Yes, of course 💕</button>
-    <button class="no" id="noBtn">No 🙄</button>
-  </div>
-
-  <div class="footer" id="funnyText">Don’t even think about pressing No 😌</div>
-  <div class="music" onclick="toggleMusic()">🎶 Tap for background music</div>
-</div>
-
-<div id="yesPage">
-  <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
-  <h1>Yaayyyy 💖</h1>
-  <p style="font-weight:700;color:#ff2f73;font-size:1.3rem;">
-    Galentine date confirmed ✨💄🍰
-  </p>
-  <p style="color:#ff77aa;font-weight:600;">
-    For <span id="yesName"></span> 💕
-  </p>
-</div>
-
 <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9d9c09cfd7.mp3">
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="noSound">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_5f6f0b0d3b.mp3">
-</audio>
+<div class="card" id="mainCard">
+  <h1>Will you be my Galentine? 💖</h1>
+  <p>Galentine’s Day | Feb 13 | 8:00 PM</p>
+  <button class="yes" onclick="sayYes()">YES 💕</button>
+  <button class="no" onclick="showMessage()">NO 😶</button>
+</div>
 
-<audio id="yesSound">
-  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_8f4f1f2b0c.mp3">
-</audio>
+<div class="card hidden" id="yesCard">
+  <h1>Yaayyyy Bestie! ✨</h1>
+  <h1>Galentine date confirmed 💄🍰</h1>
+  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="200">
+</div>
 
 <script>
-const girlName = "Bestie"; // CHANGE NAME HERE
-
-document.getElementById("girlName").innerText = girlName;
-
-const funnyTexts = [
-  "Are you sure? 😢",
-  "What do you mean NO 😤",
-  "You really want to say no to ME? 🥺",
-  "Bestie pls don’t break my heart 💔",
-  "Think again… carefully 😌"
-];
-
-const noBtn = document.getElementById("noBtn");
-const funnyText = document.getElementById("funnyText");
-
-noBtn.addEventListener("mouseenter", () => {
-  noBtn.style.animation = "panic 0.3s infinite";
-  noBtn.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*120-60}px) scale(0.85)`;
-  document.getElementById("noSound").play();
-  funnyText.innerText = funnyTexts[Math.floor(Math.random()*funnyTexts.length)];
-});
-
-let musicPlaying = false;
-function toggleMusic() {
   const music = document.getElementById("bgMusic");
-  musicPlaying ? music.pause() : music.play();
-  musicPlaying = !musicPlaying;
-}
 
-function sayYes() {
-  document.getElementById("yesSound").play();
-  document.getElementById("yesName").innerText = girlName;
-  document.getElementById("cardPage").style.display = "none";
-  document.getElementById("yesPage").style.display = "flex";
-  createHearts();
-  createSparkles();
-}
+  const messages = [
+    "Are you sure? 😢",
+    "Think again bestie 💕",
+    "You really wanna say no to me? 🥺",
+    "This hurts my pink heart 💔",
+    "Last chance 👀💖"
+  ];
 
-function createHearts() {
-  for (let i=0;i<25;i++) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerText = "💖";
-    h.style.left = Math.random()*100 + "vw";
-    h.style.bottom = "0";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),4000);
+  function showMessage() {
+    const msg = document.createElement("div");
+    msg.className = "popup";
+    msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+    msg.style.left = Math.random() * 70 + "%";
+    document.body.appendChild(msg);
+
+    setTimeout(() => msg.remove(), 3000);
   }
-}
 
-function createSparkles() {
-  for (let i=0;i<30;i++) {
-    const s = document.createElement("div");
-    s.className = "sparkle";
-    s.style.left = "50%";
-    s.style.top = "50%";
-    s.style.setProperty("--x", Math.random()*400-200+"px");
-    s.style.setProperty("--y", Math.random()*400-200+"px");
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),1200);
+  function sayYes() {
+    music.play(); // user interaction → music allowed
+    document.getElementById("mainCard").classList.add("hidden");
+    document.getElementById("yesCard").classList.remove("hidden");
+    sparkleEffect();
   }
-}
+
+  function sparkleEffect() {
+    setInterval(() => {
+      const s = document.createElement("div");
+      s.className = "sparkle";
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.bottom = "0px";
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1500);
+    }, 300);
+  }
 </script>
 
 </body>
