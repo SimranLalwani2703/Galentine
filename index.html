@@ -94,7 +94,7 @@
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="https://www.bensound.com/royalty-free-music/track/good-mood-funny-catchy" type="audio/mpeg">
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="mainCard">
@@ -125,7 +125,7 @@
     const msg = document.createElement("div");
     msg.className = "popup";
     msg.innerText = messages[Math.floor(Math.random() * messages.length)];
-    msg.style.left = Math.random() * 70 + "%";
+    msg.style.left = Math.random() * 90 + "%";
     document.body.appendChild(msg);
 
     setTimeout(() => msg.remove(), 3000);
